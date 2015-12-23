@@ -1,0 +1,16 @@
+html {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 300px;
+  color: #342254;
+  text-align: center;
+}
+
+body {
+  background-color: #B38DEF;
+  padding: 0px;
+  margin: 0px;
+}
+
+#content {
+  min-height: 100%;
+}
