@@ -8,16 +8,18 @@
 
 (enable-console-print!)
 
-(def app-state (atom {:keys []}))
+(def app-state (atom {:key nil}))
 
 (defn key-view [app owner]
   (reify
     om/IRender
     (render [_]
-      (dom/div #js {:className "key"} (-> app :keys first)))))
+      (dom/div #js {:className "key"} (:key app)))))
 
 (defn attach-root [element-id]
-  (om/root key-view app-state {:target (. js/document (getElementById "content"))}))
+  (om/root key-view
+           app-state
+           {:target (. js/document (getElementById "content"))}))
 
 (defn listen [el type]
   (let [out (chan)]
@@ -25,14 +27,28 @@
                    (fn [e] (put! out e)))
     out))
 
+(defmulti get-key identity)
+
+(defmethod get-key 13 [_]
+  "enter")
+
+(defmethod get-key 27 [_]
+  "escape")
+
+(defmethod get-key 8 [_]
+  "delete")
+
+(defmethod get-key :default [char-code]
+  (.fromCharCode js/String char-code))
+
 (defn listen-for-keys []
-  (let [keypresses (listen (gdom/getDocument) "keypress")]
+  (let [keypresses (listen (gdom/getDocument) "keydown")]
     (go (while true
           (let [key-event (<! keypresses)
-                char-code (.-charCode key-event)
-                key-pressed (.fromCharCode js/String char-code)]
+                char-code (.-keyCode key-event)
+                key-pressed (get-key char-code)]
             (.log js/console (str "char code:" char-code))
-            (swap! app-state assoc :keys [key-pressed]))))))
+            (swap! app-state assoc :key key-pressed))))))
 
 (defn main []
   (attach-root "content")
