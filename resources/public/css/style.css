@@ -1,7 +1,5 @@
 html {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 300px;
-  color: #342254;
+  font-family: Arial, sans-serif;
   text-align: center;
 }
 
@@ -13,4 +11,16 @@ body {
 
 #content {
   min-height: 100%;
+}
+
+.key {
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  color: #342254;
+  font-size: 600px;
+  font-weight: 600;
 }
