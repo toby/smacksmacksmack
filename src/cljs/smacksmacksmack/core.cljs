@@ -8,13 +8,18 @@
 
 (enable-console-print!)
 
-(def app-state (atom {:key nil}))
+(def app-state (atom {:key nil :color nil}))
+
+(def colors ["#342254" "#996F9B" "#25233C" "#522541" "#404F76" "#FE58ED" "#382A66" "#083589"])
 
 (defn key-view [app owner]
   (reify
     om/IRender
     (render [_]
-      (dom/div #js {:className "key" :id (str "key-" (:key app))} (:key app)))))
+      (dom/div #js {:className "key"
+                    :id (str "key-" (:key app))
+                    :style #js {:color (:color app)}}
+               (:key app)))))
 
 (defn attach-root [element-id]
   (om/root key-view
@@ -48,7 +53,7 @@
                 char-code (.-keyCode key-event)
                 key-pressed (get-key char-code)]
             (.log js/console (str "char code:" char-code))
-            (swap! app-state assoc :key key-pressed))))))
+            (swap! app-state assoc :key key-pressed :color (rand-nth colors)))))))
 
 (defn main []
   (attach-root "content")
