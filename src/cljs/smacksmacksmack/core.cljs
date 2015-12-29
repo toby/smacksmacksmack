@@ -14,7 +14,7 @@
   (reify
     om/IRender
     (render [_]
-      (dom/div #js {:className "key"} (:key app)))))
+      (dom/div #js {:className "key" :id (str "key-" (:key app))} (:key app)))))
 
 (defn attach-root [element-id]
   (om/root key-view

@@ -14,7 +14,7 @@ body {
 }
 
 .key {
-  text-transform: uppercase;
+  text-transform: capitalize;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -23,4 +23,16 @@ body {
   color: #342254;
   font-size: 600px;
   font-weight: 600;
+}
+
+#key-enter {
+  font-size: 300px;
+}
+
+#key-escape {
+  font-size: 270px;
+}
+
+#key-delete {
+  font-size: 270px;
 }
