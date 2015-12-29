@@ -39,7 +39,7 @@ body {
 }
 
 #key-enter {
-  font-size: 300px;
+  font-size: 270px;
 }
 
 #key-escape {
@@ -47,5 +47,9 @@ body {
 }
 
 #key-delete {
+  font-size: 270px;
+}
+
+#key-space {
   font-size: 270px;
 }

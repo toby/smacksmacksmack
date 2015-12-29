@@ -34,11 +34,14 @@
 
 (defmulti get-key identity)
 
-(defmethod get-key 13 [_]
-  "enter")
+(defmethod get-key 32 [_]
+  "space")
 
 (defmethod get-key 27 [_]
   "escape")
+
+(defmethod get-key 13 [_]
+  "enter")
 
 (defmethod get-key 8 [_]
   "delete")
