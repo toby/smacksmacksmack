@@ -49,6 +49,10 @@
 (defmethod get-key :default [char-code]
   (.fromCharCode js/String char-code))
 
+(defn random-voice []
+  ;(get (rand-nth (js->clj (.getVoices js/responsiveVoice))) "name")
+  (rand-nth ["US English Female" "UK English Female" "UK English Male" "US English Male"]))
+
 (defn listen-for-keys []
   (let [keypresses (listen (gdom/getDocument) "keydown")]
     (go (while true
@@ -56,7 +60,7 @@
                 char-code (.-keyCode key-event)
                 key-pressed (get-key char-code)]
             (.log js/console (str "char code:" char-code))
-            (.speak js/responsiveVoice key-pressed "US English Female")
+            (.speak js/responsiveVoice key-pressed (random-voice))
             (swap! app-state assoc :key key-pressed :color (rand-nth colors)))))))
 
 (defn main []
