@@ -56,6 +56,7 @@
                 char-code (.-keyCode key-event)
                 key-pressed (get-key char-code)]
             (.log js/console (str "char code:" char-code))
+            (.speak js/responsiveVoice key-pressed "US English Female")
             (swap! app-state assoc :key key-pressed :color (rand-nth colors)))))))
 
 (defn main []
