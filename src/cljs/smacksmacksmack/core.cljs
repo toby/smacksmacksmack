@@ -8,7 +8,7 @@
 
 (enable-console-print!)
 
-(def app-state (atom {:key nil :color nil}))
+(def app-state (atom {:key "press any key" :color nil}))
 
 (def colors ["#342254" "#996F9B" "#25233C" "#522541" "#404F76" "#FE58ED" "#382A66" "#083589"])
 
@@ -17,7 +17,7 @@
     om/IRender
     (render [_]
       (dom/div #js {:className "key"
-                    :id (str "key-" (:key app))
+                    :id (str "key-" (clojure.string/replace (:key app) #" " "-"))
                     :style #js {:color (:color app)}}
                (:key app)))))
 
