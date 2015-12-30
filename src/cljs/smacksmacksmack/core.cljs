@@ -3,7 +3,8 @@
             [om.dom :as dom :include-macros true]
             [goog.events :as events]
             [goog.dom :as gdom]
-            [cljs.core.async :as async :refer [chan put! pipe unique merge map< filter< alts!]])
+            [cljs.core.async :as async :refer [chan put! pipe unique merge map< filter< alts!]]
+            [clojure.string :as string])
   (:require-macros [cljs.core.async.macros :refer [go]]))
 
 (enable-console-print!)
@@ -17,7 +18,7 @@
     om/IRender
     (render [_]
       (dom/div #js {:className "key"
-                    :id (str "key-" (clojure.string/replace (:key app) #" " "-"))
+                    :id (str "key-" (string/replace (:key app) #" " "-"))
                     :style #js {:color (:color app)}}
                (:key app)))))
 
