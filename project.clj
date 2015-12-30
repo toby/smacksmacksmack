@@ -1,4 +1,4 @@
-(defproject smacksmacksmack "0.1.1"
+(defproject smacksmacksmack "0.1.2"
   :description "Learn about keyboards."
   :url "http://smacksmacksmack.herokuapp.com/"
   :license {:name "Eclipse Public License"

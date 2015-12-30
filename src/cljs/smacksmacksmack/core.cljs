@@ -75,7 +75,7 @@
   (rand-nth voices))
 
 (defn listen-for-keys []
-  (let [keypresses (listen (gdom/getDocument) "keypress")]
+  (let [keypresses (listen (gdom/getDocument) "keydown")]
     (go (while true
           (let [key-event (<! keypresses)
                 char-code (.-keyCode key-event)
