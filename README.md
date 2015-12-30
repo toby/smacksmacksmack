@@ -1,5 +1,10 @@
 # smacksmacksmack
 
+## What is it?
+
+A quick web app designed to help little kids learn about keyboards
+and letters. The live version is at http://smacksmacksmack.herokuapp.com/
+
 
 ## Development
 
@@ -79,12 +84,6 @@ lein with-profile -dev,+production uberjar && foreman start
 Now your app is running at
 [http://localhost:5000](http://localhost:5000) in production mode.
 
-## License
-
-Copyright © 2014 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
 
 ## Chestnut
 
