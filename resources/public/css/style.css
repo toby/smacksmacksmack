@@ -43,11 +43,31 @@ body {
   font-size: 270px;
 }
 
+#key-command {
+  font-size: 200px;
+}
+
 #key-enter {
   font-size: 270px;
 }
 
 #key-escape {
+  font-size: 270px;
+}
+
+#key-alt {
+  font-size: 270px;
+}
+
+#key-control {
+  font-size: 270px;
+}
+
+#key-shift {
+  font-size: 270px;
+}
+
+#key-tab {
   font-size: 270px;
 }
 

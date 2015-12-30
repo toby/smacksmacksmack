@@ -13,6 +13,8 @@
 
 (def colors ["#342254" "#996F9B" "#25233C" "#522541" "#404F76" "#FE58ED" "#382A66" "#083589"])
 
+(def voices ["US English Female" "UK English Female" "UK English Male" "US English Male"])
+
 (defn key-view [app owner]
   (reify
     om/IRender
@@ -35,14 +37,32 @@
 
 (defmulti get-key identity)
 
+(defmethod get-key 91 [_]
+  "command")
+
+(defmethod get-key 93 [_]
+  "command")
+
 (defmethod get-key 32 [_]
   "space")
 
 (defmethod get-key 27 [_]
   "escape")
 
+(defmethod get-key 18 [_]
+  "alt")
+
+(defmethod get-key 17 [_]
+  "control")
+
+(defmethod get-key 16 [_]
+  "shift")
+
 (defmethod get-key 13 [_]
   "enter")
+
+(defmethod get-key 9 [_]
+  "tab")
 
 (defmethod get-key 8 [_]
   "delete")
@@ -52,10 +72,10 @@
 
 (defn random-voice []
   ;(get (rand-nth (js->clj (.getVoices js/responsiveVoice))) "name")
-  (rand-nth ["US English Female" "UK English Female" "UK English Male" "US English Male"]))
+  (rand-nth voices))
 
 (defn listen-for-keys []
-  (let [keypresses (listen (gdom/getDocument) "keydown")]
+  (let [keypresses (listen (gdom/getDocument) "keypress")]
     (go (while true
           (let [key-event (<! keypresses)
                 char-code (.-keyCode key-event)
