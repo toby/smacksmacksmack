@@ -43,11 +43,31 @@ body {
   font-size: 270px;
 }
 
+#key-back-slash {
+  font-size: 200px;
+}
+
 #key-command {
   font-size: 200px;
 }
 
 #key-enter {
+  font-size: 270px;
+}
+
+#key-up {
+  font-size: 270px;
+}
+
+#key-left {
+  font-size: 270px;
+}
+
+#key-down {
+  font-size: 270px;
+}
+
+#key-right {
   font-size: 270px;
 }
 

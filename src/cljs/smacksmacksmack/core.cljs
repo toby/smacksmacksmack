@@ -37,11 +37,29 @@
 
 (defmulti get-key identity)
 
+(defmethod get-key 220 [_]
+  "back slash")
+
+(defmethod get-key 191 [_]
+  "slash")
+
 (defmethod get-key 91 [_]
   "command")
 
 (defmethod get-key 93 [_]
   "command")
+
+(defmethod get-key 37 [_]
+  "left")
+
+(defmethod get-key 38 [_]
+  "up")
+
+(defmethod get-key 39 [_]
+  "right")
+
+(defmethod get-key 40 [_]
+  "down")
 
 (defmethod get-key 32 [_]
   "space")
